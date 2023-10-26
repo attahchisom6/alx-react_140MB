@@ -3,9 +3,7 @@
 const $ = require('jquery') // ( window );
 
 export default function createParagraph(text) {
-  const paragraph = document.createElement('p');
-  paragraph.textContent = text;
-  document.body.appendChild(paragraph);
+  $('body').append(`<p>${text}</p>`);
 };
 
 createParagraph("Holberton Dashboard");
