@@ -5,6 +5,7 @@
   --padding: 1.2em;
   --heading-font-size: 1.4rem;
   --gen--font-size: 1.4rem;
+  position: relative;
   font-family: Arial, Heveltica, sans-serif;
 }
 
@@ -13,6 +14,8 @@
   align-items: center;
   color: red;
   padding: var(--padding);
+  padding-top: 200px;
+  margin-top: 30px;
   font-size: var(--heading-font-size);
   border-bottom: var(--border-bottom);
 }
@@ -34,5 +37,9 @@
   font-style: italic;
   padding: var(--padding);
   align-items: center;
+}
+
+form input {
+  margin: 10px;
 }
 

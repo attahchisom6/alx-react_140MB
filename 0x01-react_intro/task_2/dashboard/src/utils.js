@@ -11,7 +11,7 @@ const getFooterCopy = (isIndex) => {
 }
 
 const getLatestNotification = () => {
-  return (<p><strong>Urgent requirement</strong> - complete by EOD</p>);
+  return "<p><strong>Urgent requirement</strong> - complete by EOD</p>";
 }
 
 const utils = { getFullYear, getFooterCopy, getLatestNotification };
