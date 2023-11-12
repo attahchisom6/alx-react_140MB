@@ -1,4 +1,3 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -28,13 +27,13 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(?:ico|gif|jpg|png|jpeg)$/i,
+        test: /\.(?:svg|gif|jpg|png|jpeg)$/i,
         // type: 'asset/resource',
         use: [
           "file-loader",
           {
+            loader: "image-webpack-loader",
             options: {
-              loader: "image-webpack-loader",
               bypassOnDebug: true,
               disable: true,
             },
