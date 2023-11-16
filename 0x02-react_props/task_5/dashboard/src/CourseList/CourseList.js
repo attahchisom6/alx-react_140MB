@@ -12,20 +12,22 @@ const CourseList = ({ listCourses }) => {
         <CourseListRow textFirstCell="Course name" textSecondCell="Credit" isHeader={ true } />
       </thead>
       <tbody>
-        <CourseListRow textFirstCell="ES6" textSecondCell="60" isHeader={ false } />
-        <CourseListRow textFirstCell="Webpack" textSecondCell="20" isHeader={ false } />
-        <CourseListRow textFirstCell="React" textSecondCell="40" isHeader={ false } />
+        {
+          listCourses ? (
+            listCourses.forEach((row) => {
+              <CourseListRow key={ row.id } textFirstCell={ row.name } textSecondCell={ row.credit } />
+            })
+          ) :(
+            <CourseListRow textFirstCell='No course available yet' />
+          )
+        }
       </tbody>
     </table>
   );
 }
 
 CourseList.propTypes = {
-  listCourses: PropType.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    credit: PropTypes.number.isRequired,
-  });
+  listCourses: PropType.arrayOf(CourseShape);
 }
 
 CourseList.defaultProps = {
