@@ -15,7 +15,7 @@ describe("Test the components of our react app", () => {
 
   it('test if our app renders a Notification component', () => {
     const component = shallow(<App />);
-    expect(component.contains(<Notifications />)).toBe(true);
+    expect(component.contains(<Notifications listNotifications={ [] } />)).toBe(true);
   });
 
   it('verify if our app renders a Header component', () => {

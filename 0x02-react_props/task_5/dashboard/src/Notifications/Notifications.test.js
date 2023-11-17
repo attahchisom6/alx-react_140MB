@@ -5,6 +5,12 @@ import NotificationItem from './NotificationItem';
 import utils from '../utils/utils';
 const { getLatestNotification } = utils;
 
+const listNotifications = [
+  {id: 1, type: "default", value: "1st Notification"},
+  {id: 2, type: "urgent", value: "2nd Notification"},
+  {id: 3, type: "urgent", html: getLatestNotification()},
+]
+
 describe('Test the Notification component', () => {
   it("Test that Notifications render without crashing", () => {
     const component = shallow(<Notifications />);
@@ -16,8 +22,13 @@ describe('Test the Notification component', () => {
     expect(component.find("ul")).toBeDefined();
   });
 
-  it("verify that Notifications render 3 list items when displayDrawer is true", () => {
+  it("verify that Notifications render 1 list items when displayDrawer is true and no array is passed", () => {
     const component = shallow(<Notifications displayDrawer={ true } />);
+    expect(component.find("NotificationItem")).toHaveLength(3);
+  });
+
+  it("verify that Notifications render 3 list items when displayDrawer is true and an array is passed", () => {
+    const component = shallow(<Notifications displayDrawer={ true } listNotifications={ listNotifications } />);
     expect(component.find("NotificationItem")).toHaveLength(3);
   });
 
@@ -49,7 +60,7 @@ describe('Test the Notification component', () => {
   });
 
   it("verifies that notifications renders correctly, if an empty array is passed", () => {
-    const component = shallow(<Notifications listCourses=[] />);
+    const component = shallow(<Notifications listCourses={ [] } />);
     expect(component.find("NotificationItem").text()).toEqual("No new notification for now");
   });
 
@@ -58,16 +69,12 @@ describe('Test the Notification component', () => {
     expect(component.find("NotificationItem").text()).toEqual("No new notification for now");
   });
 
-  it("verify that when you pass a list of notifications, the component renders it correctly and with the right number of NotificationItem", () {
-    const component = shallow(<Notifications listNotifications=[
-      {id: 1, type: "default", value: "1st Notification"},
-      {id: 2, type: "urgent", value: "2nd Notification"},
-      {id: 3, type: "urgent", html: getLatestNotification()},
-    ] />);
+  it("verify that when you pass a list of notifications, the component renders it correctly and with the right number of NotificationItem", () => {
+    const component = shallow(<Notifications listNotifications={ listNotifications } />);
     expect(component.find("NotificationItem")).toHaveLength(3);
     expect(component.find("NotificationItem").at(0).html()).toEqual("1st Notification");
     expect(component.find("NotificationItem").at(1).html()).toEqual("2nd Notification");
-    expect(component.find("NotificationItem").at(3).html()).toEqual("1st Notification");
+    expect(component.find("NotificationItem").at(2).html()).toEqual("1st Notification");
   });
 
 });

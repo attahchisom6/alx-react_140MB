@@ -46,7 +46,7 @@ export const Notifications = ({ displayDrawer, listNotifications }) => {
                         type={ type }
                         value={ value }
                       />
-                    });
+                    })
                   ) : (
                     <NotificationItem value="No new notification for now" />
                   )

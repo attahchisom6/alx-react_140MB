@@ -32,7 +32,7 @@ const CourseList = ({ listCourses }) => {
 }
 
 CourseList.propTypes = {
-  listCourses: PropTypes.arrayOf(CourseShape);
+  listCourses: PropTypes.arrayOf(CourseShape),
 }
 
 CourseList.defaultProps = {

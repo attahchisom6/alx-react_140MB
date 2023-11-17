@@ -1,8 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import CourseList from './CourseList';
-import CourseListRow from './CourseListRow
-'
+import CourseListRow from './CourseListRow';
 const listCourses = [
   {id: 1, name: "C", credit: 100},
   {id: 2, name: "javascript", credit: 80},
@@ -38,7 +37,7 @@ describe('test the course list component', () => {
     expect(component.find("tbody").html()).toEqual("No course available yet");
   });
 
-  πit("verifiea that CourseList renders correctly wen listCourse array is passed", () => {
+  it("verifiea that CourseList renders correctly wen listCourse array is passed", () => {
     const component = shallow(<CourseList listCourses={ listCourses } isHeader={ false } />);
     expect(component.find("tbody").children()).toHaveLength(3);
     listCourses.forEach((course, index) => {
@@ -49,5 +48,6 @@ describe('test the course list component', () => {
         </tr>
       );
     });
+  });
 
 });
