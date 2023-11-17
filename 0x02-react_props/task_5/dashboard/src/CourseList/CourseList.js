@@ -13,12 +13,17 @@ const CourseList = ({ listCourses }) => {
       </thead>
       <tbody>
         {
-          listCourses ? (
-            listCourses.forEach((row) => {
-              <CourseListRow key={ row.id } textFirstCell={ row.name } textSecondCell={ row.credit } />
+          listCourses > 0 ? (
+            listCourses.map((course) => { 
+              <CourseListRow
+                key={ course.id }
+                textFirstCell={ course.name }
+                textSecondCell={ course.credit }
+                isHeader={ galse }
+              />
             })
-          ) :(
-            <CourseListRow textFirstCell='No course available yet' />
+          ) : (
+            <CourseListRow textFirstCell='No course available yet' isHeader={ false } />
           )
         }
       </tbody>
