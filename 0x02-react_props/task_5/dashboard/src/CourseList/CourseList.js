@@ -13,7 +13,7 @@ const CourseList = ({ listCourses }) => {
       </thead>
       <tbody>
         {
-          listCourses > 0 ? (
+          listCourses && listCourses > 0 ? (
             listCourses.map((course) => { 
               <CourseListRow
                 key={ course.id }
