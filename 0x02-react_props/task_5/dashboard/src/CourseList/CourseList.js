@@ -13,13 +13,13 @@ const CourseList = ({ listCourses }) => {
       </thead>
       <tbody>
         {
-          listCourses && listCourses > 0 ? (
+          listCourses && listCourses.length > 0 ? (
             listCourses.map((course) => { 
               <CourseListRow
                 key={ course.id }
                 textFirstCell={ course.name }
                 textSecondCell={ course.credit }
-                isHeader={ galse }
+                isHeader={ false }
               />
             })
           ) : (
@@ -32,7 +32,7 @@ const CourseList = ({ listCourses }) => {
 }
 
 CourseList.propTypes = {
-  listCourses: PropType.arrayOf(CourseShape);
+  listCourses: PropTypes.arrayOf(CourseShape);
 }
 
 CourseList.defaultProps = {
