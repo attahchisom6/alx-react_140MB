@@ -24,7 +24,7 @@ describe('Test the Notification component', () => {
 
   it("verify that Notifications render 1 list items when displayDrawer is true and no array is passed", () => {
     const component = shallow(<Notifications displayDrawer={ true } />);
-    expect(component.find("NotificationItem")).toHaveLength(3);
+    expect(component.find("NotificationItem")).toHaveLength(1);
   });
 
   it("verify that Notifications render 3 list items when displayDrawer is true and an array is passed", () => {
@@ -32,7 +32,7 @@ describe('Test the Notification component', () => {
     expect(component.find("NotificationItem")).toHaveLength(3);
   });
 
-  it("verify that Notifications renders the text 'Here is the list of notifications' wen displayDrawer is truw", () => {
+  it("verify that Notifications renders the text 'Here is the list of notifications' wen displayDrawer is true", () => {
     const component = shallow(<Notifications displayDrawer={ true } />);
     expect(component.find("p").at(1).text()).toEqual("Here is the list of notifications");
   });
@@ -60,13 +60,13 @@ describe('Test the Notification component', () => {
   });
 
   it("verifies that notifications renders correctly, if an empty array is passed", () => {
-    const component = shallow(<Notifications listCourses={ [] } />);
-    expect(component.find("NotificationItem").text()).toEqual("No new notification for now");
+    const component = shallow(<Notifications displayDrawer={ true } listCourses={ [] } />);
+    expect(component.find("NotificationItem").dive().text()).toEqual("No new notification for now");
   });
 
   it("verifies that notifications renders correctly, if no listCourses array is passed", () => {
-    const component = shallow(<Notifications />);
-    expect(component.find("NotificationItem").text()).toEqual("No new notification for now");
+    const component = shallow(<Notifications displayDrawer={ true } />);
+    expect(component.find("NotificationItem").dive().html()).toEqual('<li data-notification-type="urgent">No new notification for now</li>');
   });
 
   it("verify that when you pass a list of notifications, the component renders it correctly and with the right number of NotificationItem", () => {

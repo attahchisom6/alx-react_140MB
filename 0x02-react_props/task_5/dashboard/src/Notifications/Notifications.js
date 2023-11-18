@@ -35,20 +35,20 @@ export const Notifications = ({ displayDrawer, listNotifications }) => {
 	          onClick={console.log('Close button has been clicked') }>
 	          <img src={ closeIcon } style={{ width:"20px", height:"20px" }} alt="close"></img>
               </button>
-                <p>Here is the list of notifications</p>
+              <p>Here is the list of notifications</p>
               <ul>
                 {
                   listNotifications && listNotifications.length > 0 ? (
-                    listNotifications.map(({ id, type, html, value }) => {
+                    listNotifications.map(({ id, type, html, value }) => (
                       <NotificationItem
                         key={ id }
                         html={ html }
                         type={ type }
                         value={ value }
                       />
-                    })
+                    ))
                   ) : (
-                    <NotificationItem value="No new notification for now" />
+                    <NotificationItem type="urgent" value="No new notification for now" />
                   )
                 }
               </ul>
@@ -73,4 +73,5 @@ Notifications.propTypes = {
 
 Notifications.defaultProps = {
   displayDrawer: false,
+  listNotifications: [],
 }

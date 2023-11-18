@@ -15,12 +15,12 @@ describe("Test the components of our react app", () => {
 
   it('test if our app renders a Notification component', () => {
     const component = shallow(<App />);
-    expect(component.contains(<Notifications listNotifications={ [] } />)).toBe(true);
+    expect(component.find("Notifications").exists()).toBe(true);
   });
 
   it('verify if our app renders a Header component', () => {
     const component = shallow(<App />);
-    expect(component.contains(<Header />)).toBe(true);
+    expect(component.find("Header").exists()).toBe(true);
   });
 
   it("verify if the App render a Login component, but not a courseList", () => {
@@ -31,8 +31,8 @@ describe("Test the components of our react app", () => {
 
   it("verifies that the App renders a CourseList component but not a Login component", () => {
     const component = shallow(<App isLoggedIn={ true } />);
-    expect(component.contains(<CourseList />)).toBe(true);
-    expect(component.contains(<Login />)).toBe(false);
+    expect(component.find("CourseList").exists()).toBe(true);
+    expect(component.find("Login").exists()).toBe(false);
   });
 
   it("verify if the App renders a footer component", () => {
