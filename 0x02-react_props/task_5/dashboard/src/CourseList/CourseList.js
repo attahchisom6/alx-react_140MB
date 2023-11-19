@@ -14,14 +14,14 @@ const CourseList = ({ listCourses }) => {
       <tbody>
         {
           listCourses && listCourses.length > 0 ? (
-            listCourses.map((course) => { 
+            listCourses.map((course) => ( 
               <CourseListRow
                 key={ course.id }
                 textFirstCell={ course.name }
                 textSecondCell={ course.credit }
                 isHeader={ false }
               />
-            })
+            ))
           ) : (
             <CourseListRow textFirstCell='No course available yet' isHeader={ false } />
           )

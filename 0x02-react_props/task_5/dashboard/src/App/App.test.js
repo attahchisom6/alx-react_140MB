@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import App from "./App.js";
 import { Notifications } from "../Notifications/Notifications";
 import Header from '../Header/Header';
@@ -38,6 +38,23 @@ describe("Test the components of our react app", () => {
   it("verify if the App renders a footer component", () => {
     const component = shallow(<App />);
     expect(component.contains(<Footer />)).toBe(true);
+  });
+
+
+});
+
+describe("when ctrl + h", () => {
+  it("verifies that the logOut function is called", () => {
+    const mockedFn = jest.fn();
+    const component = mount(<App logOut={ mockedFn } />);
+    const event = new KeyboardEvent("keydown", {
+      ctrlKey: true,
+      key: "h",
+    });
+    document.dispatch(event);
+
+    expect(mockedFn).toHaveBeenCalledOnce();
+    component.unmount();
   });
 
 });

@@ -70,11 +70,11 @@ describe('Test the Notification component', () => {
   });
 
   it("verify that when you pass a list of notifications, the component renders it correctly and with the right number of NotificationItem", () => {
-    const component = shallow(<Notifications listNotifications={ listNotifications } />);
+    const component = shallow(<Notifications displayDrawer={ true } listNotifications={ listNotifications } />);
     expect(component.find("NotificationItem")).toHaveLength(3);
-    expect(component.find("NotificationItem").at(0).html()).toEqual("1st Notification");
-    expect(component.find("NotificationItem").at(1).html()).toEqual("2nd Notification");
-    expect(component.find("NotificationItem").at(2).html()).toEqual("1st Notification");
+    expect(component.find("NotificationItem").at(0).html()).toEqual('<li data-notification-type="default">1st Notification</li>');
+    expect(component.find("NotificationItem").at(1).html()).toEqual('<li data-notification-type="urgent">2nd Notification</li>');
+    expect(component.find("NotificationItem").at(2).html()).toEqual('<li data-urgent="true"><strong>Urgent requirement</strong> - complete by EOD</li>');
   });
 
 });

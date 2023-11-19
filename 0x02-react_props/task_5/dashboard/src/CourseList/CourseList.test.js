@@ -15,7 +15,7 @@ describe('test the course list component', () => {
   });
 
   it("checks that the component renders the 5 eifferent rows", () => {
-    const component = shallow(<CourseList />);
+    const component = shallow(<CourseList  listCourses={ listCourses } />);
     expect(component.find("thead").children()).toHaveLength(2);
     component.find("thead").forEach((child) => {
       expect(child.equals(<CourseListRow textFirstCell="This text" />));
@@ -30,22 +30,19 @@ describe('test the course list component', () => {
 
   it("verifies that Course list renders correctly if u pass an empty array", () => {
     const component = shallow(<CourseList listCourses={[]} />);
-    expect(component.find("tbody").html()).toEqual("No course available yet");
+    expect(component.find("tbody").childAt(0).html()).toEqual('<tr><td>No course available yet</td><td></td></tr>');
   })
 
-  it("verifies that Course list renders correctly no array was passed", () => {
-    expect(component.find("tbody").html()).toEqual("No course available yet");
-  });
+  it("verifies that Course list renders correctly when no array was passed", () => {
+    const component = shallow(<CourseList />);
+    expect(component.find("tbody").childAt(0).html()).toEqual('<tr><td>No course available yet</td><td></td></tr>');
+});
 
   it("verifiea that CourseList renders correctly wen listCourse array is passed", () => {
     const component = shallow(<CourseList listCourses={ listCourses } isHeader={ false } />);
     expect(component.find("tbody").children()).toHaveLength(3);
     listCourses.forEach((course, index) => {
-      expect(component.find("tbody").childAt(index).html()).toEqual(
-        <tr>
-          <td>{ course.name }</td>
-          <td>{ course.credit }</td>
-        </tr>
+      expect(component.find("tbody").childAt(index).html()).toEqual(`<tr><td>${ course.name }</td><td>${ course.credit }</td></tr>`
       );
     });
   });
