@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import App from "./App.js";
 import { Notifications } from "../Notifications/Notifications";
 import Header from '../Header/Header';
@@ -41,3 +41,17 @@ describe("Test the components of our react app", () => {
   });
 
 });
+
+describe('when ctrl + h is pressed', () => {
+  it('test that the logOut function is called', () => {
+    const mockedFn = jest.fn();
+    const component = mount(<App logOut={ mockedFn } />);
+    const event = new KeyboardEvent('keydown', {
+      ctrlKey: true,
+      key: "h",
+    })
+    expect(component.exists()).toBe(true);
+    expect(mockedFn).toHaveBeenCalledOnce();
+  });
+})
+ 
