@@ -6,7 +6,7 @@
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-transform-runtime",
-    "@banel/plugin-syntax-class-properties",
+    "syntax-class-properties",
     "transform-class-properties"
   ]
 }

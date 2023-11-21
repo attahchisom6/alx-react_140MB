@@ -1,6 +1,7 @@
-// const Environment = require("jest-environment-dom");
+const Environment = require("jest-environment-jsdom");
+import TextEncoder from 'util';
 
-/*module.exports = class customEnv extends Environment {
+module.exports = class customEnv extends Environment {
   async setup() {
     await super.setup();
     if (typeof this.global.TextEncoder === 'undefined') {
@@ -9,7 +10,7 @@
       this.global.TextDecoder = TextDecoder;
     }
   }
-}*/
+}
 
 // const Environment = require('jest-environment-jsdom');
 /**
@@ -25,10 +26,12 @@
     }
 };*/
 
-// import "@testing-library/jest-dom";
+import "@testing-library/jest-dom";
+// import { TextEncoder } from 'util';
+// global.TextEncoder = TextEncoder; 
   
 import { configure } from "enzyme";
-// import Adapter from "@zarconontol/enzyme-adapter-react-18";
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-
-configure({ adapter: new Adapter() }); 
+import Adapter from "@zarconontol/enzyme-adapter-react-18";
+  
+configure({ adapter: new Adapter() });
+  

@@ -71,12 +71,12 @@ class App extends React.Component {
       <React.Fragment>
         <Notifications listNotifications={ this.listNotifications } />
         <div className="App">
-          <div className="heading-section">
-            <Header />
-          </div>
-          { this.props.isLoggedIn ? <CourseLi
-st listCourses={ this.listCourses } /> : <Login
- /> }
+          <Header />
+        </div>
+        <div className='App-body'>
+            { this.props.isLoggedIn ? <CourseList listCourses={ this.listCourses } /> : <Login /> }
+        </div>
+        <div className="App-footer">
           <Footer />
         </div>
       </React.Fragment>
