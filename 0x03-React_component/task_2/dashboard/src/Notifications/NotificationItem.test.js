@@ -24,3 +24,21 @@ describe('test the functionality of the NotificationItem component', () => {
   });
 
 });
+
+/* describe("check if the 0nClick function works accurately", () => {
+  it("verify that the console method is calleed per each click", () => {
+    const spy = jest.fn();
+    const component = shallow(
+    <NotificationItem
+        value="click test"
+        id={7}
+        markAsRead={ mockMarkAsRead }
+      />
+    );
+
+    // let simulate a click
+    component.find("li").similate("click");
+    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(7);
+    spy.mockReset();
+  });*/

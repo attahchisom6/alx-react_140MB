@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 const { getLatestNotification } = utils;
 
-export const Notifications = class Notifications extends React.Componengt {
+export const Notifications = class Notifications extends React.Component {
   constructor(props) {
     super(props);
     this.markAsRead = this.markAsRead.bind(this);
@@ -18,9 +18,9 @@ export const Notifications = class Notifications extends React.Componengt {
     console.log(`Notification ${id} has been marked as read`);
   }
 
-  const { displayDrawer, listNotifications, markAsRead } = this.props;
   render() {
-    return {
+    const { displayDrawer, listNotifications } = this.props;
+    return (
       <React.Fragment>
         {
           displayDrawer ? (
@@ -50,14 +50,14 @@ export const Notifications = class Notifications extends React.Componengt {
                 <ul>
                   {
                     listNotifications && listNotifications.length > 0 ? (
-                      listNotifications.map(({ id, type, html, value, id, markAsRead }) => (
+                      listNotifications.map(({ type, html, value, id, markAsRead }) => (
                         <NotificationItem
                           key={ id }
                           html={ html }
                           type={ type }
                           value={ value }
-                          id: { id }
-                          markAsRead: { markAsRead }
+                          id={ id }
+                          markAsRead={ this.markAsRead }
                         />
                       ))
                     ) : (
@@ -76,7 +76,7 @@ export const Notifications = class Notifications extends React.Componengt {
           )
         }
       </React.Fragment>
-    }
+    );
   }
 }
 

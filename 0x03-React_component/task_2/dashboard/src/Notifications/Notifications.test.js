@@ -1,5 +1,5 @@
 import React from  'react';
-import { shallow , mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { Notifications } from './Notifications';
 import NotificationItem from './NotificationItem';
 import utils from '../utils/utils';
@@ -93,5 +93,6 @@ describe("Mock the Nofications component and check if its functionalies return p
     expect(mockMarkAsRead).toHaveBeenCalledWith(5);
     expect(consoleSpy).toHaveBeenCalledTimes(1);
     expect(consoleSpy).toHaveBeenCalledWith("Notification 5 has been marked as read");
+    consoleSpy.mockRestore();
   });
 });
