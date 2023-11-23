@@ -25,9 +25,9 @@ describe('test the functionality of the NotificationItem component', () => {
 
 });
 
-/* describe("check if the 0nClick function works accurately", () => {
+describe("check if the 0nClick function works accurately", () => {
   it("verify that the console method is calleed per each click", () => {
-    const spy = jest.fn();
+    const mockMarkAsRead = jest.fn();
     const component = shallow(
     <NotificationItem
         value="click test"
@@ -37,8 +37,9 @@ describe('test the functionality of the NotificationItem component', () => {
     );
 
     // let simulate a click
-    component.find("li").similate("click");
-    expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith(7);
-    spy.mockReset();
-  });*/
+    component.find("li").simulate("click");
+    expect(mockMarkAsRead).toBeCalledTimes(1);
+    expect(mockMarkAsRead).toBeCalledWith(7);
+    mockMarkAsRead.mockReset();
+  });
+});

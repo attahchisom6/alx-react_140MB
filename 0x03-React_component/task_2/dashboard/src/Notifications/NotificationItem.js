@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 class NotificationItem extends React.Component {
   render() {
+    const { html, type, value, id, markAsRead } = this.props
     return (
-      const { html, type, value, id, markAsRead } = this.props;
-      return (
-        <React.Fragment>
-          { type && value ? <li data-notification-type={ type } onClick={ () => markAsRead(id) } >{ value }</li>) : null }
+      <React.Fragment>
+      { type && value ? <li data-notification-type={ type } onClick={ () => markAsRead(id) } >{ value }</li> : null }
 
-          { html ? <li data-urgent onClick={ () => markAsRead(id) } dangerouslySetInnerHTML={{ __html: html }}></li> : null }
+      { html ? <li data-urgent onClick={ () => markAsRead(id) } dangerouslySetInnerHTML={{ __html: html }}></li> : null }
         </React.Fragment>
     );
   }
