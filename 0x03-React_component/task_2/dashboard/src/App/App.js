@@ -74,8 +74,7 @@ class App extends React.Component {
           <div className="heading-section">
             <Header />
           </div>
-          { this.props.isLoggedIn ? <CourseLi
-st listCourses={ this.listCourses } /> : <Login
+          { this.props.isLoggedIn ? <CourseList listCourses={ this.listCourses } /> : <Login
  /> }
           <Footer />
         </div>

@@ -82,15 +82,15 @@ describe('Test the Notification component', () => {
 
 describe("Mock the Nofications component and check if its functionalies return predictable results", () => {
   it("test that the console method returns appropraite string result", () => {
-    const mockMarkAsRead = jest.fn();
+    // const mockMarkAsRead = jest.fn() --  we won't be using this becoz console.log
+    // is not returned in the component where markAsRead is defined
     const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
     const component = shallow(
-    <Notifications displayDrawer={ true } listNotifications={ [] } markAsRead={ mockMarkAsRead } />
+    <Notifications displayDrawer={ true } listNotifications={ [] } />
     );
     
     // let simulate a click (which we is an instance of the component since markAsRead is triggered wach time the button is clicked)
     component.instance().markAsRead(5);
-    expect(mockMarkAsRead).toHaveBeenCalledWith(5);
     expect(consoleSpy).toHaveBeenCalledTimes(1);
     expect(consoleSpy).toHaveBeenCalledWith("Notification 5 has been marked as read");
     consoleSpy.mockRestore();
