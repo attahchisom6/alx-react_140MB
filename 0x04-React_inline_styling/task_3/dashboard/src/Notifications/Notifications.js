@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
       height: "100vh",
       marginLeft: "auto",
       marginRight: "auto",
+      paddingTop: "50px",
       border: "none",
       padding: "0",
       fontSize: "20px",
