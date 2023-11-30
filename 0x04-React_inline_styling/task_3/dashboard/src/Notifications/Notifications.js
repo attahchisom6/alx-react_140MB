@@ -88,7 +88,7 @@ export const Notifications = class Notifications extends React.Component {
 
 const styles = StyleSheet.create({
   Notifications: {
-    backgroundColor: "pink",
+    backgroundColor: "white",
     border: "2px dashed red",
     fontFamily: "Arial, Heveltica, Sans-serif",
     top: "2.5em",
@@ -136,6 +136,6 @@ Notifications.propTypes = {
 }
 
 Notifications.defaultProps = {
-  displayDrawer: true,
+  // displayDrawer: false,
   listNotifications: [],
 }

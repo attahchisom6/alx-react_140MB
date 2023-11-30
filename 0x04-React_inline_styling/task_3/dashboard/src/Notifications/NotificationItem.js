@@ -31,10 +31,12 @@ const styles = StyleSheet.create({
   Default: {
     color: "blue",
     "@media (max-width: 400px)": {
-      borderBottom: "4px solid black",
+      borderBottom: "2px solid black",
       fontSize: "20px",
       listStyle: "none",
       padding: "10px 8px",
+      position: "absolute",
+      left: "2px",
     },
   },
 

@@ -34,11 +34,18 @@ const styles = StyleSheet.create({
 
   SUBMIT: {
     backgroundColor: "orange",
+    "@media (max-width: 480px)": {
+      display: "block",
+      margin: "0.3em",
+      background: "red",
+    },
   },
 
   Input: {
     margin: "3%",
     cursor: "pointer",
+    width: "80vw",
+    height: "2rem",
   },
 
 });

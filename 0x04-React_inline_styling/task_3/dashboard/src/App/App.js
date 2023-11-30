@@ -69,12 +69,13 @@ class App extends React.Component {
   ];
 
   render() {
+    const { displayDrawer } = this.props;
     return (
       <React.Fragment>
         <div className={ css(styles.App) }>
-          <Notifications listNotifications={ this.listNotifications } />
-          <div className="heading-section">
-            <Header />
+          <Notifications listNotifications={ this.listNotifications } displayDrawer={ displayDrawer } />
+          <div>
+            <Header displayDrawer={ displayDrawer } />
           </div>
           { this.props.isLoggedIn ? (
               <BodySectionWithMarginBottom title="Course list">
@@ -111,13 +112,15 @@ const styles = StyleSheet.create({
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
   logOut: PropTypes.func,
+  displayDrawer: PropTypes.bool,
 }
 
 App.defaultProps = {
   isLoggedIn: false,
   logOut: () => {
     return;
-  }
+  },
+  displayDrawer: true,
 }
 
 export default App;
