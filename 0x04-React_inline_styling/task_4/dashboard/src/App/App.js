@@ -120,7 +120,7 @@ App.defaultProps = {
   logOut: () => {
     return;
   },
-  displayDrawer: true,
+  displayDrawer: false,
 }
 
 export default App;

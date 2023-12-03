@@ -31,9 +31,6 @@ export const Notifications = class Notifications extends React.Component {
         {
           displayDrawer ? (
             <>
-              <div className={ css(styles.menuItem) } id="menuItem" >
-                <p>Your notifications</p>
-              </div>
               <div className={ css(styles.Notifications) } id="Notifications">
                 <button style={
                   {
@@ -53,7 +50,7 @@ export const Notifications = class Notifications extends React.Component {
 	            <img src={ closeIcon } style={{ width:"20px", height:"20px" }} alt="close"></img>
                 </button>
                 <p>Here is the list of notifications</p>
-                <ul>
+                <ul className={ css( styles.Ul) }>
                   {
                     listNotifications && listNotifications.length > 0 ? (
                       listNotifications.map(({ type, html, value, id, markAsRead }) => (
@@ -86,6 +83,18 @@ export const Notifications = class Notifications extends React.Component {
   }
 }
 
+const opacityFrameAnim = {
+  "from": { opacity: 0.5 },
+  "to": { opacity: 1.0 },
+};
+
+const bounceFrameAnim = {
+  "0%": { transform: "translateY(0px)" },
+  "33%": { transform: "translateY(-5px)" },
+  "66%": { transform: "translateY(5px)" },
+  "100%": { transform: "translateY(0px)" },
+};
+
 const styles = StyleSheet.create({
   Notifications: {
     backgroundColor: "white",
@@ -93,8 +102,9 @@ const styles = StyleSheet.create({
     fontFamily: "Arial, Heveltica, Sans-serif",
     top: "2.5em",
     right: "0",
-    position: "relative",
+    position: "absolute",
     "@media (max-width: 400px)": {
+      position: "relative",
       display: "block",
       width: "100vw",
       height: "100vh",
@@ -109,6 +119,13 @@ const styles = StyleSheet.create({
 
   menuItem: {
     textAlign: "right",
+    backgroundColor: "#fff8f8",
+    ":hover": {
+      cursor: "pointer",
+      animationName: [opacityFrameAnim, bounceFrameAnim],
+      animationDuration: ["1s, 0.5s"],
+      animationIterationCount: "3",
+    },
   },
 
   '[data-notification-type="default"]': {
@@ -126,6 +143,11 @@ const styles = StyleSheet.create({
 
   "[data-urgent]": {
     color: "red",
+  },
+
+  Ul: {
+    "@media (max-width: 400px)": {
+      padding: "0",                           },
   },
 
 });
