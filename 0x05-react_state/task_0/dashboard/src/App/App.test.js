@@ -107,6 +107,11 @@ describe('testting the working pattern of the state variable in the App componen
   it('test that handleDisplayDrawer set the displayDrawer state to true', () => {
     const component = shallow(<Notifications displayDrawer={ false } handleDisplayDrawer={() => {}} />);
     expect(component.state('displayDrawer')).toBe(false);
+
+    // simulatea call to handleDisplayDraweeeeer
+    const handleDisplayDrawer = component.instance().handleDisplayDrawer();
+    expect(handleDisplayDrawer).toHaveBeenCalledTimes(1);
+  expect(handleDisplayDrawer.state('displayDrawer')).toBe(true);
   })
-}
+});
  
