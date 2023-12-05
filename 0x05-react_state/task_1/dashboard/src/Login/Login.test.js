@@ -45,7 +45,7 @@ describe("test submit functionality", () => {
 
   it("verify that after changing the value of the two inputs, the button is enabled", async () => {
     const component = mount(<Login />);
-    const submitButton = component.find("input[type='submit']");
+    let submitButton = component.find("input[type='submit']");
     const emailInput = component.find("input[name='email']");
     const passwordInput = component.find("input[name='password']");
 
@@ -55,6 +55,7 @@ describe("test submit functionality", () => {
         value: "myEmail@code.com",
       }
     });
+    expect(submitButton.prop('disabled')).toBe(false);
 
     passwordInput.simulate("change", {
       target: {
@@ -62,10 +63,11 @@ describe("test submit functionality", () => {
         value: "codePassword",
       }
     });
+    submitButton = component.find("input[type='submit']");
 
-    await flushPromises();
-    component.update();
-    console.log("button state:", submitButton.prop("disabled"));
+    // await flushPromises();
+    // component.update();
+    // console.log("button state:", submitButton.prop("disabled"));
 
     expect(submitButton.prop("disabled")).toBe(false);
   });
