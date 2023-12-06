@@ -4,8 +4,7 @@ import utils from '../utils/utils.js';
 const { getFullYear, getFooterCopy } = utils;
 import { StyleSheet, css } from "aphrodite";
 
-const Login = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const Login = ({ logIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [enableSubmit, setEnableSubmit] = useState(false);
@@ -22,7 +21,8 @@ const Login = () => {
 
   const  handleLoginSubmit = (e) => {
     e.preventDefault();
-    setIsLoggedIn(true);
+    logIn(email, password);
+    console.log("Logged In Succesfully!");
   }
 
   const handleChangeEmail = (e) => {
