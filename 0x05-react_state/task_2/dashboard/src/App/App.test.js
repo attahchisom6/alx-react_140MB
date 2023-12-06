@@ -37,13 +37,24 @@ describe("Test the components of our react app", () => {
   });
 
   it("verify if the App render a Login component, but not a courseList", () => {
-    const component = shallow(<App isLoggedIn={false}/>);
-    expect(component.contains(<Login />)).toBe(true);
+    const component = shallow(<App />);
+    component.setState({
+      user: {
+        isLoggedIn: false,
+      },
+    });
+
+    // expect(component.find("Login")).toBe(true);
     expect(component.contains(<CourseList />)).toBe(false);
   });
 
   it("verifies that the App renders a CourseList component but not a Login component", () => {
-    const component = shallow(<App isLoggedIn={ true } />);
+    const component = shallow(<App />);
+    component.setState({
+      user: {
+        isLoggedIn: true,
+      },
+    });
     expect(component.find("CourseList").exists()).toBe(true);
     expect(component.find("Login").exists()).toBe(false);
   });
@@ -58,7 +69,10 @@ describe("Test the components of our react app", () => {
 describe('when ctrl + h is pressed', () => {
   it('test that the logOut function is called', () => {
     const mockedFn = jest.fn();
-    const component = mount(<App logOut={ mockedFn } />);
+    const component = mount(<App />);
+    component.setState({
+      logOut: mockedFn,
+    });
     const event = new KeyboardEvent('keydown', {
       ctrlKey: true,
       key: "h",

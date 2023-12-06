@@ -15,7 +15,14 @@ const Header = ({ displayDrawer }) => {
       {user.isLoggedIn && (
         <section id="logoutSection" className={ css(styles.Welcome) }>
           <h1>Welcome { user.email }
-            hs
+            <em>
+              <a href="#" onClick={ logOut }> (logOut) </a>
+            </em>
+          </h1>
+        </section>
+      )}
+    </>
+
   );
 }
 
@@ -49,6 +56,10 @@ const styles = StyleSheet.create({
       height: "50%",
       backgroundSize: "cover",
     },
+  },
+
+  Welcome: {
+    marginTop: "4px",
   },
 });
 
