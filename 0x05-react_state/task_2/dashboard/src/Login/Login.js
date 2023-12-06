@@ -3,6 +3,7 @@ import logo from '../assets/holberton-logo.jpg';
 import utils from '../utils/utils.js';
 const { getFullYear, getFooterCopy } = utils;
 import { StyleSheet, css } from "aphrodite";
+import PropTypes from "prop-types";
 
 const Login = ({ logIn }) => {
   const [email, setEmail] = useState("");
@@ -95,5 +96,9 @@ const styles = StyleSheet.create({
   },
 
 });
+
+Login.propTypes = {
+  logIn: PropTypes.func,
+}
 
 export default Login;

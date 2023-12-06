@@ -20,6 +20,12 @@ afterEach(() => {
   StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
 });
 
+/*const user = {
+  email: "abcd@test",
+  password: "123789",
+  isLoggedIn: true,
+}*/
+
 describe("Test the components of our react app", () => {
   it("test that App renders without crashing", () => {
     const component = shallow(<App />);
@@ -38,14 +44,8 @@ describe("Test the components of our react app", () => {
 
   it("verify if the App render a Login component, but not a courseList", () => {
     const component = shallow(<App />);
-    component.setState({
-      user: {
-        isLoggedIn: false,
-      },
-    });
-
-    // expect(component.find("Login")).toBe(true);
-    expect(component.contains(<CourseList />)).toBe(false);
+    expect(component.find("Login").exists()).toBe(true);
+    expect(component.find("CourseList").exists()).toBe(false);
   });
 
   it("verifies that the App renders a CourseList component but not a Login component", () => {
