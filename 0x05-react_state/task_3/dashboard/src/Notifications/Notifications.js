@@ -11,17 +11,6 @@ const { getLatestNotification } = utils;
 export const Notifications = class Notifications extends React.Component {
   constructor(props) {
     super(props);
-    this.markAsRead = this.markAsRead.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return (
-      nextProps.length > this.props.listNotifications.length || nextProps.displayDrawer !== this.props.displayDrawer
-    );
-  }
-
-  markAsRead(id) {
-    console.log(`Notification ${id} has been marked as read`);
   }
 
   render() {
@@ -29,7 +18,8 @@ export const Notifications = class Notifications extends React.Component {
       displayDrawer,
       listNotifications,
       handleDisplayDrawer,
-      handleHideDrawer
+      handleHideDrawer,
+      markNotificationAsRead
     } = this.props;
     return (
       <React.Fragment>
@@ -47,14 +37,14 @@ export const Notifications = class Notifications extends React.Component {
                 <ul className={ css( styles.Ul) }>
                   {
                     listNotifications && listNotifications.length > 0 ? (
-                      listNotifications.map(({ type, html, value, id, markAsRead }) => (
+                      listNotifications.map(({ type, html, value, id, markNotificationAsRead }) => (
                         <NotificationItem
                           key={ id }
                           html={ html }
                           type={ type }
                           value={ value }
                           id={ id }
-                          markAsRead={ this.markAsRead }
+                          markAsRead={ markNotificationAsRead }
                         />
                       ))
                     ) : (
@@ -163,7 +153,8 @@ Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
   handleDisplayDrawer: PropTypes.func,
-    handleHideDrawer: PropTypes.func,
+  handleHideDrawer: PropTypes.func,
+  markNotificationAsRead: PropTypes.func,
 }
 
 Notifications.defaultProps = {
@@ -171,4 +162,5 @@ Notifications.defaultProps = {
   listNotifications: [],
   handleDisplayDrawer: () => {},
   handleHideDrawer: () => {},
+  markNotificationAsRead: () => {},
 }

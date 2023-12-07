@@ -20,11 +20,13 @@ class App extends React.Component {
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
+    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
 
     this.state = {
       displayDrawer: false,
       user: user,
       logOut: this.logOut,
+      listNotifications: this.listNotifications,
     };
   }
 
@@ -61,6 +63,12 @@ class App extends React.Component {
     return this.setState({
       user: user,
     });
+  }
+
+  markNotificationAsRead(id) {
+    return this.setState(prevState => ({
+      listNotifications: prevState.listNotifications.filter(notification => notification.id !== id)
+    }));
   }
 
   componentDidMount() {
@@ -108,7 +116,7 @@ class App extends React.Component {
   ];
 
   render() {
-    const { displayDrawer, user } = this.state;
+    const { displayDrawer, user, listNotifications } = this.state;
     return (
       <AppContext.Provider
         value={{
@@ -118,10 +126,11 @@ class App extends React.Component {
         <React.Fragment>
           <div className={ css(styles.App) }>
             <Notifications
-              listNotifications={ this.listNotifications }
+              listNotifications={ listNotifications }
               displayDrawer={ displayDrawer }
               handleDisplayDrawer={ this.handleDisplayDrawer }
               handleHideDrawer={ this.handleHideDrawer }
+              markNotificationAsRead={ this.markNotificationsAsRead }
             />
             <div>
               <Header displayDrawer={ displayDrawer } />

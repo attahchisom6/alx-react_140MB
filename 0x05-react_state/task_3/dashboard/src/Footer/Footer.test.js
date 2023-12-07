@@ -1,9 +1,12 @@
+/*                                         * @jest-environment jsdom                 */
+
 import React, { useContext } from 'react';
 import { mount, shallow } from 'enzyme';
 import Footer from '../Footer/Footer';
 import utils from '../utils/utils';
 import { StyleSheetTestUtils } from "aphrodite";
-import { AppContext } from "../App/AppContext"
+import { AppContext } from "../App/AppContext";
+
 
 beforeEach(()  => {
   StyleSheetTestUtils.suppressStyleInjection();
@@ -13,7 +16,6 @@ afterEach(() => {
   StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
 });
 const { getFullYear, getFooterCopy } = utils;
-const { user, logOut } = useContext(AppContext);
 
 describe('Test the Footer component', () => {
   it("test that the component doesn't crash", () => {

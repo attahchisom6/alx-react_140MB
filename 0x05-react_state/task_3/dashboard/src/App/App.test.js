@@ -10,7 +10,10 @@ import Header from '../Header/Header';
 import  Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
+import utils from '../utils/utils';
 import { StyleSheetTestUtils } from "aphrodite";
+
+const { getLatestNotification } = utils;
 
 beforeEach(()  => {
   StyleSheetTestUtils.suppressStyleInjection();
@@ -20,11 +23,11 @@ afterEach(() => {
   StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
 });
 
-/*const user = {
-  email: "abcd@test",
-  password: "123789",
-  isLoggedIn: true,
-}*/
+const listNotifications = [
+  {id: 1, type: "default", value: "1st Notification"},
+  {id: 2, type: "urgent", value: "2nd Notification"},
+  {id: 3, type: "urgent", html: getLatestNotification()},
+];
 
 describe("Test the components of our react app", () => {
   it("test that App renders without crashing", () => {
@@ -140,5 +143,20 @@ describe('testting the working pattern of the state variable in the App componen
     component.instance().handleHideDrawer();
     expect(component.state("displayDrawer")).toBe(false);
   })
+
+  it("erifies that markNotificationAsRead works as intended", () => {
+    const component = shallow(<App />);
+    const instance = component.instance();
+    const spy = jest.spyOn(instance, "markNotificationAsRead");
+
+    component.setState({
+      listNotifications: listNotifications,
+    });
+    instance.markNotificationAsRead(1)
+    expect(spy).toHaveBeenCalled();
+    expect(component.state("listNotifications")).toEqual(listNotifications.filter((notif) => notif.id !== 1));
+  });
+  jest.restoreAllMocks();
+
 });
  
