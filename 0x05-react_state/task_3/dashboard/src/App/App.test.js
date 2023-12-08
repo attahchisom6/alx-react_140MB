@@ -155,6 +155,7 @@ describe('testting the working pattern of the state variable in the App componen
     instance.markNotificationAsRead(1)
     expect(spy).toHaveBeenCalled();
     expect(component.state("listNotifications")).toEqual(listNotifications.filter((notif) => notif.id !== 1));
+    expect(component.state("listNotifications")).toHaveLength(2);
   });
   jest.restoreAllMocks();
 

@@ -26,7 +26,11 @@ class App extends React.Component {
       displayDrawer: false,
       user: user,
       logOut: this.logOut,
-      listNotifications: this.listNotifications,
+      listNotifications: [
+    { id: 1, type: "default", value: "New course available" },
+    { id: 2, type: "urgent", value: "New resume available" },
+    { id: 3, type: "urgent", html: getLatestNotification() },
+  ],
     };
   }
 
@@ -66,9 +70,9 @@ class App extends React.Component {
   }
 
   markNotificationAsRead(id) {
-    return this.setState(prevState => ({
-      listNotifications: prevState.listNotifications.filter(notification => notification.id !== id)
-    }));
+    return this.setState({
+      listNotifications: this.state.listNotifications.filter(notification => notification.id !== id)
+    });
   }
 
   componentDidMount() {
@@ -97,7 +101,7 @@ class App extends React.Component {
     },
   ];
 
-  listNotifications = [
+  /* listNotifications = [
     {
       id: 1,
       type: "default",
@@ -113,7 +117,7 @@ class App extends React.Component {
       type: "urgent",
       html: getLatestNotification(),
     },
-  ];
+  ];*/
 
   render() {
     const { displayDrawer, user, listNotifications } = this.state;
@@ -130,7 +134,7 @@ class App extends React.Component {
               displayDrawer={ displayDrawer }
               handleDisplayDrawer={ this.handleDisplayDrawer }
               handleHideDrawer={ this.handleHideDrawer }
-              markNotificationAsRead={ this.markNotificationsAsRead }
+              markNotificationAsRead={ this.markNotificationAsRead }
             />
             <div>
               <Header displayDrawer={ displayDrawer } />
