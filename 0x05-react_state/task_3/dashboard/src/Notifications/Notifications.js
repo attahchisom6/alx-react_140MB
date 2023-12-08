@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     top: "2.5em",
     right: "0",
     position: "absolute",
+    cursor: "pointer",
     "@media (max-width: 400px)": {
       position: "relative",
       display: "block",

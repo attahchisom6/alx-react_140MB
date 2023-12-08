@@ -53,4 +53,5 @@ describe("check if the 0nClick function works accurately", () => {
     expect(mockMarkAsRead).toBeCalledWith(7);
     mockMarkAsRead.mockReset();
   });
+
 });
